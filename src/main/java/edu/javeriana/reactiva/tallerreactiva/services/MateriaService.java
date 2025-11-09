@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class MateriaService {
 
-    @Autowired
     private final MateriaRepository materiaRepository;
     public MateriaService(MateriaRepository materiaRepository) {
         this.materiaRepository = materiaRepository;

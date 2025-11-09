@@ -3,14 +3,15 @@ package edu.javeriana.reactiva.tallerreactiva.controllers;
 import edu.javeriana.reactiva.tallerreactiva.entities.Nota;
 import edu.javeriana.reactiva.tallerreactiva.services.NotaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/notas")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class NotaController {
-    @Autowired
     private final NotaService notaService;
     public NotaController(NotaService notaService) {
         this.notaService = notaService;
@@ -26,7 +27,7 @@ public class NotaController {
         return notaService.obtenerNotasPorEstudiante(idEstudiante);
     }*/
     @PostMapping
-    public Mono<Nota> crearNota(Nota nota) {
+    public Mono<Nota> crearNota(@RequestBody Nota nota) {
         return notaService.registrarNotaEstudianteMateria(nota);
     }
 
@@ -40,4 +41,8 @@ public class NotaController {
         return notaService.eliminarNota(id);
     }
 
+    @GetMapping(value = "/stream/promedio/{idEstudiante}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Double> promedioReactivo(@PathVariable Long idEstudiante) {
+        return notaService.promedioNotasStream(idEstudiante);
+    }
 }

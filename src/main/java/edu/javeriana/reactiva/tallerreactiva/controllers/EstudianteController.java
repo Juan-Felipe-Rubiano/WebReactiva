@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/api/estudiantes")
 public class EstudianteController {
-    @Autowired
     private final EstudianteService estudianteService;
     public EstudianteController(EstudianteService estudianteService) {
         this.estudianteService = estudianteService;

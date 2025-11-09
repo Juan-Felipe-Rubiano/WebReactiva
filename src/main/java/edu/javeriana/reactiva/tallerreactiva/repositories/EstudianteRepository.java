@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface EstudianteRepository extends ReactiveCrudRepository<Estudiante,Long> {
     Mono<Boolean> existsByCorreo(String correo);
-    Mono<Estudiante> getEstudianteById(Long idEstudiante);
+    Mono<Estudiante> findById(Long idEstudiante);
 }

@@ -5,7 +5,7 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 
 public interface NotaRepository extends ReactiveCrudRepository<Nota, Long> {
-    Flux<Nota> findByEstudianteAndMateriaId(Long estudianteId, Long materiaId);
-    Flux<Nota> findByMateria(Long materiaId);
-    Flux<Nota> findByEstudiante(Long estudianteId);
+    Flux<Nota> findByEstudianteIdAndMateriaId(Long estudianteId, Long materiaId);
+    Flux<Nota> findByMateriaId(Long materiaId);
+    Flux<Nota> findByEstudianteId(Long estudianteId);
 }

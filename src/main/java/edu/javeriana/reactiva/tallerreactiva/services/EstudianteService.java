@@ -9,7 +9,6 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class EstudianteService {
-    @Autowired
     private final EstudianteRepository estudianteRepository;
 
     public EstudianteService(EstudianteRepository estudianteRepository) {
@@ -45,6 +44,6 @@ public class EstudianteService {
     }
 
     public Mono<Estudiante> obtenerEstudiantePorId(Long idEstudiante){
-        return estudianteRepository.getEstudianteById(idEstudiante);
+        return estudianteRepository.findById(idEstudiante);
     }
 }

@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/api/materias")
 public class MateriaController {
-    @Autowired
     private final MateriaService materiaService;
     public MateriaController(MateriaService materiaService) {
         this.materiaService = materiaService;
